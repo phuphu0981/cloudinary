@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cloudController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\LoverController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,9 @@ Route::delete('/files/delete/{publicId}', [FileController::class, 'destroy'])->n
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/lovers', [LoverController::class, 'index'])->name('lovers.index');
+Route::post('/lovers', [LoverController::class, 'store'])->name('lovers.store');
+Route::get('/lovers/{id}/edit', [LoverController::class, 'edit'])->name('lovers.edit');
+Route::put('/lovers/{id}', [LoverController::class, 'update'])->name('lovers.update');
+Route::delete('/lovers/{id}', [LoverController::class, 'destroy'])->name('lovers.destroy');
